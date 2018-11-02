@@ -1,7 +1,5 @@
 package com.example;
 
-import java.util.ArrayList;
-
 /**
  * This is a class.
  */
