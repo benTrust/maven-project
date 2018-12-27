@@ -3,7 +3,7 @@ pipeline {
     stages{
 		stage('DEBUG INFO'){
             steps {
-                echo $JAVA_HOME
+                echo '$JAVA_HOME'
             }
         }
 		stage('DEBUG INFO 2'){
