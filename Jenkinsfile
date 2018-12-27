@@ -3,17 +3,17 @@ pipeline {
     stages{
 		stage('DEBUG INFO'){
             steps {
-                bat 'echo $JAVA_HOME'
+                echo $JAVA_HOME
             }
         }
 		stage('DEBUG INFO 2'){
             steps {
-                bat 'echo "%JAVA_HOME%"'
+                echo '%JAVA_HOME%'
             }
         }
 		stage('DEBUG INFO 3'){
             steps {
-                bat 'which java'
+                which java
             }
         }
         stage('Build'){
