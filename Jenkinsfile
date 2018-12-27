@@ -8,7 +8,7 @@ pipeline {
         }
 		stage('DEBUG INFO 2'){
             steps {
-                bat 'echo "%JAVA_HOME%"'
+                bat 'echo %JAVA_HOME%'
             }
         }
         stage('Build'){
