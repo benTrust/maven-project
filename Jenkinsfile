@@ -3,7 +3,7 @@ pipeline {
     stages{
 		stage('DEBUG INFO'){
             steps {
-                bat 'echo $JAVA_HOME'
+                bat 'mvn -version'
             }
         }
 		stage('DEBUG INFO 2'){
