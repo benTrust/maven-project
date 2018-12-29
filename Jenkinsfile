@@ -26,7 +26,12 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat 'cp "C:/Program Files (x86)/Jenkins/jobs/mavenProjectPAC/lastSuccessful/archive/webapp/target/webapp.war" "C:/Program Files/Apache Software Foundation/apache-tomcat-9.0.14/webapps"'
+                        bat 'echo cp "C:/Program Files (x86)/Jenkins/jobs/mavenProjectPAC/lastSuccessful/archive/webapp/target/webapp.war" "C:/Program Files/Apache Software Foundation/apache-tomcat-9.0.14/webapps"'
+                    }
+                }
+				stage ('Deploy to Prod'){
+                    steps {
+                        bat 'echo cp "C:/Program Files (x86)/Jenkins/jobs/mavenProjectPAC/lastSuccessful/archive/webapp/target/webapp.war" "C:/Program Files/Apache Software Foundation/apache-tomcat-9.0.14Prod/webapps"'
                     }
                 }
             }
