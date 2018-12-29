@@ -23,7 +23,7 @@ pipeline {
                     input message:'Approve PRODUCTION Deployment?'
                 }
 
-                echo: 'Deploying to production...'
+                echo 'Deploying to production...'
             }
             post {
                 success {
