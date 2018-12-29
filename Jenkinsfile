@@ -1,6 +1,15 @@
 pipeline {
     agent any
-    stages{
+
+    parameters {
+         string(name: 'tomcat_dev', defaultValue: 'localhost', description: 'Staging Server')
+    }
+
+    triggers {
+         pollSCM('* * * * *')
+     }
+
+stages{
         stage('Build'){
             steps {
                 bat 'mvn clean package'
@@ -12,28 +21,15 @@ pipeline {
                 }
             }
         }
-		stage ('Deploy to Staging'){
-            steps {
-                build job: 'mavenProjectPAC-deploy'
-            }
-		}
-		stage ('Deploy to Production'){
-            steps{
-                timeout(time:5, unit:'DAYS'){
-                    input message:'Approve PRODUCTION Deployment?'
-                }
 
-                echo 'Deploying to production...'
-            }
-            post {
-                success {
-                    echo 'Code deployed to Production.'
-                }
-
-                failure {
-                    echo ' Deployment failed.'
+        stage ('Deployments'){
+            parallel{
+                stage ('Deploy to Staging'){
+                    steps {
+                        bat "cp C:/Program Files (x86)/Jenkins/jobs/mavenProjectPAC/lastSuccessful/archive/webapp/target/webapp.war C:/Program Files/Apache Software Foundation/apache-tomcat-9.0.14/webapps"
+                    }
                 }
             }
-		}
+        }
     }
 }
